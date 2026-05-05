@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(anchor_data_ingest_gate LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+add_library(policy src/policy.cpp)
+target_include_directories(policy PUBLIC include)
+add_executable(policy_test tests/test_policy.cpp)
+target_link_libraries(policy_test policy)
