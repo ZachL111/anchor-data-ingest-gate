@@ -61,3 +61,8 @@ foreach ($pathPattern in $knownPaths) {
 New-Item -ItemType Directory -Force build | Out-Null
 g++ -std=c++17 -Wall -Wextra -Werror -Iinclude src/policy.cpp tests/test_policy.cpp -o build/test_policy.exe
 ./build/test_policy.exe
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-anchor-data-ingest-detail.ps1
+
+g++ -std=c++17 -Wall -Wextra -Werror -Iinclude src/domain_review.cpp tests/test_domain_review.cpp -o build/test_domain_review.exe
+./build/test_domain_review.exe

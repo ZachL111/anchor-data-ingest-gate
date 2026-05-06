@@ -1,0 +1,73 @@
+{
+  "repo": "anchor-data-ingest-gate",
+  "language": "C++",
+  "category": "Data engineering",
+  "goal": "Build a C++ toolkit that studies ingest behavior through transition tables, with invalid-transition tests and no credentials or hosted services.",
+  "review_model": {
+    "terms": [
+      "schema drift",
+      "lineage depth",
+      "partition skew",
+      "quality gap"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "schema drift",
+      "signal": 71,
+      "slack": 41,
+      "drag": 11,
+      "confidence": 45,
+      "score": 195,
+      "lane": "ship"
+    },
+    {
+      "name": "stress",
+      "focus": "lineage depth",
+      "signal": 77,
+      "slack": 45,
+      "drag": 9,
+      "confidence": 82,
+      "score": 254,
+      "lane": "ship"
+    },
+    {
+      "name": "edge",
+      "focus": "partition skew",
+      "signal": 50,
+      "slack": 25,
+      "drag": 29,
+      "confidence": 66,
+      "score": 104,
+      "lane": "hold"
+    },
+    {
+      "name": "recovery",
+      "focus": "quality gap",
+      "signal": 85,
+      "slack": 37,
+      "drag": 25,
+      "confidence": 87,
+      "score": 219,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "schema drift",
+      "signal": 71,
+      "slack": 51,
+      "drag": 28,
+      "confidence": 80,
+      "score": 189,
+      "lane": "ship"
+    }
+  ]
+}
