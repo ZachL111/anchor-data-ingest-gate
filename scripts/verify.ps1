@@ -66,3 +66,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-anchor-data-in
 
 g++ -std=c++17 -Wall -Wextra -Werror -Iinclude src/domain_review.cpp tests/test_domain_review.cpp -o build/test_domain_review.exe
 ./build/test_domain_review.exe
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-anchor-data-ingest-properties.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-anchor-data-ingest-golden.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
