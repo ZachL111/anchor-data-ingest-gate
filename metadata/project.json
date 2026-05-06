@@ -1,0 +1,32 @@
+{
+  "index": 407,
+  "phase": 2,
+  "batch": 46,
+  "name": "anchor-data-ingest-gate",
+  "planned_name": "anchor-data-ingest-gate",
+  "language": "C++",
+  "category": "Data engineering",
+  "goal": "Build a C++ toolkit that studies ingest behavior through transition tables, with invalid-transition tests and no credentials or hosted services.",
+  "repository_url": "https://github.com/ZachL111/anchor-data-ingest-gate",
+  "verification_command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1",
+  "model": {
+    "inputs": [
+      "demand",
+      "capacity",
+      "latency",
+      "risk",
+      "weight"
+    ],
+    "threshold": 156,
+    "risk_penalty": 5,
+    "latency_penalty": 2,
+    "weight_bonus": 5,
+    "decision_rule": "accept when score is greater than or equal to threshold, otherwise review"
+  },
+  "quality_gates": [
+    "readme constraint scan",
+    "fixture presence check",
+    "metadata JSON parse",
+    "language verifier"
+  ]
+}
